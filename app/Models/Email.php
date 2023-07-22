@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Emails_List extends Model
+class Email extends Model
 {
     use HasFactory;
-    protected $table = 'emails_list';
-    public function email()
+    protected $table = 'email_content';
+
+    public function recipients()
     {
-        return $this->belongsTo(Email::class);
+        return $this->hasMany(Emails_List::class);
     }
 }

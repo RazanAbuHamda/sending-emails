@@ -30,11 +30,19 @@ class Developers_Plus_Emails extends Mailable
      *
      * @return $this
      */
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
     public function build()
     {
         return $this->subject($this->emailSubject)
-            ->text('plain')
-            ->with($this->emailMessage, 'text/html');
+            ->view('email_structure')
+            ->with('email_message', $this->emailMessage)
+            ->with('email_subject', $this->emailSubject);
+        // Pass the email message to the view
     }
+
 
 }
